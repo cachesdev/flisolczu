@@ -40,7 +40,7 @@
 			format: 'Stand',
 			title: 'PROBANDO S.O. OPEN SOURCE (LINUX, UBUNTU, FEDORA...)',
 			details: 'Curso: 4to - UTIC',
-			people: 'Responsable: Equipo 4to UTIC (por confirmar)',
+			people: 'Responsable: Anónimo (por confirmar)',
 			type: 'stand'
 		},
 		{
@@ -58,7 +58,7 @@
 			format: 'Stand',
 			title: 'VIDEOJUEGO CON SEGUIMIENTO CORPORAL',
 			details: 'Curso: 4to - UTIC',
-			people: 'Responsable: Equipo de innovación 4to UTIC (por confirmar)',
+			people: 'Responsable: Anónimo (por confirmar)',
 			type: 'stand'
 		},
 		{
@@ -94,7 +94,7 @@
 			format: 'Disertación',
 			title: 'PROGRAMAS OPEN SOURCE RECOMENDADOS',
 			details: 'Bloque de recomendaciones de software libre para estudio y trabajo.',
-			people: 'Disertante: Referente de comunidad FLISOL (por confirmar)',
+			people: 'Disertante: Anónimo (por confirmar)',
 			type: 'disertacion'
 		},
 		{
@@ -103,7 +103,7 @@
 			format: 'Disertación',
 			title: 'EMPEZAR EN LINUX SIN MORIR EN EL INTENTO',
 			details: 'Guía práctica para primeros pasos en distribuciones Linux.',
-			people: 'Disertante: Mentor Linux de la comunidad (por confirmar)',
+			people: 'Disertante: Anónimo (por confirmar)',
 			type: 'disertacion'
 		}
 	] as const;
