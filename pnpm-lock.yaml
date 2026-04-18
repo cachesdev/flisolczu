@@ -101,6 +101,9 @@ importers:
       '@fontsource-variable/geist':
         specifier: ^5.2.8
         version: 5.2.8
+      '@number-flow/svelte':
+        specifier: ^0.4.0
+        version: 0.4.0(svelte@5.55.2)
       animejs:
         specifier: ^4.3.6
         version: 4.3.6
@@ -720,6 +723,11 @@ packages:
   '@noble/hashes@1.8.0':
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
     engines: {node: ^14.21.3 || >=16}
+
+  '@number-flow/svelte@0.4.0':
+    resolution: {integrity: sha512-9tnowrlZlBV3IVe3Gm1V7yXSf4Ugag2k7iW45xqb04HXSa1ApEImopvGWAjJpHDvS849o+UCb0YH461Mtde9lA==}
+    peerDependencies:
+      svelte: ^4 || ^5
 
   '@oxc-project/types@0.124.0':
     resolution: {integrity: sha512-VBFWMTBvHxS11Z5Lvlr3IWgrwhMTXV+Md+EQF0Xf60+wAdsGFTBx7X7K/hP4pi8N7dcm1RvcHwDxZ16Qx8keUg==}
@@ -2061,6 +2069,9 @@ packages:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
 
+  number-flow@0.6.0:
+    resolution: {integrity: sha512-K8flNq2Wqus53vjp/btVo3qXFkagF8dIdYavreBfE7hlvFFG/b1HMGEH6nZL+mlrJ+4lbLP9OmPv3t2rmRkpSQ==}
+
   object-treeify@1.1.33:
     resolution: {integrity: sha512-EFVjAYfzWqWsBMRHPMAXLCDIJnpMhdWAqR7xG6M6a2cs6PMFpl/+Z20w9zDW4vkxOFfddegBKq9Rehd0bxWE7A==}
     engines: {node: '>= 10'}
@@ -3105,6 +3116,12 @@ snapshots:
       '@noble/hashes': 1.8.0
 
   '@noble/hashes@1.8.0': {}
+
+  '@number-flow/svelte@0.4.0(svelte@5.55.2)':
+    dependencies:
+      esm-env: 1.2.2
+      number-flow: 0.6.0
+      svelte: 5.55.2
 
   '@oxc-project/types@0.124.0': {}
 
@@ -4278,6 +4295,10 @@ snapshots:
   npm-run-path@4.0.1:
     dependencies:
       path-key: 3.1.1
+
+  number-flow@0.6.0:
+    dependencies:
+      esm-env: 1.2.2
 
   object-treeify@1.1.33: {}
 

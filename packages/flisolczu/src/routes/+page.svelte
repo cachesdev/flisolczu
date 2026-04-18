@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { ArrowSquareOutIcon } from 'phosphor-svelte';
+	import CountdownSection from '$lib/components/landing/countdown.svelte';
 	import HeroSection from '$lib/components/landing/hero-section.svelte';
 	import ScheduleSection from '$lib/components/landing/schedule-section.svelte';
+	import SiteFooter from '$lib/components/landing/site-footer.svelte';
 	import SponsorBand from '$lib/components/landing/sponsor-band.svelte';
-	import TalksCarousel from '$lib/components/landing/talks-carousel.svelte';
 </script>
 
 <svelte:head>
@@ -24,31 +25,7 @@
 
 		<SponsorBand />
 
-		<section
-			class="grid gap-4 rounded-[calc(var(--radius-card)+8px)] border border-flisol-blue-300/35 bg-white/90 p-6 shadow-sm md:grid-cols-[1.2fr_1fr] md:items-center"
-		>
-			<div class="space-y-2">
-				<h2 class="text-xl font-semibold text-flisol-blue-600 sm:text-2xl">
-					Texto con gancho que aun no escribi
-				</h2>
-				<p class="max-w-[60ch] text-sm leading-relaxed text-slate-600 sm:text-base">
-					Descripción breve que explique por qué es importante participar, qué pueden esperar los
-					asistentes y qué tipo de actividades habrá.
-				</p>
-			</div>
-
-			<div class="rounded-2xl border border-flisol-orange-400/40 bg-flisol-orange-400/10 p-4">
-				<p class="text-xs font-semibold tracking-[0.14em] text-flisol-orange-500 uppercase">
-					Un highlight interesante, a lo mejor sobre el certificado
-				</p>
-				<p class="mt-2 text-sm leading-relaxed text-slate-700">
-					Explicación breve del highlight, por ejemplo qué beneficios tiene el certificado, cómo
-					ayuda a los asistentes o qué lo hace especial.
-				</p>
-			</div>
-		</section>
-
-		<TalksCarousel />
+		<CountdownSection />
 
 		<ScheduleSection />
 
@@ -78,3 +55,5 @@
 		</section>
 	</main>
 </div>
+
+<SiteFooter />
