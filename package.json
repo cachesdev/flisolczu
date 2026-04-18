@@ -1,9 +1,9 @@
 {
-  "name": "flisol-cert",
-  "version": "0.1.0",
-  "private": "true",
-  "type": "module",
-  "keywords": [],
-  "author": "Gustavo Dominguez",
-  "packageManager": "pnpm@10.28.0"
+	"name": "flisolczu",
+	"version": "0.1.0",
+	"private": "true",
+	"type": "module",
+	"keywords": [],
+	"author": "Gustavo Dominguez",
+	"packageManager": "pnpm@10.28.0"
 }
