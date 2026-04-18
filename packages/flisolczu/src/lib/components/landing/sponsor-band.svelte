@@ -1,23 +1,12 @@
 <script lang="ts">
-	import {
-		BuildingOffice,
-		Circuitry,
-		Cloud,
-		Code,
-		Database,
-		GlobeHemisphereWest
-	} from 'phosphor-svelte';
 	import { animate } from 'animejs';
 	import { MediaQuery } from 'svelte/reactivity';
 
-	const sponsors = [
-		{ name: 'Kernel Labs', area: 'Infraestructura abierta', icon: Cloud },
-		{ name: 'AndesDB', area: 'Datos y observabilidad', icon: Database },
-		{ name: 'LibreWave', area: 'Conectividad comunitaria', icon: GlobeHemisphereWest },
-		{ name: 'OpenNode', area: 'Cloud para estudiantes', icon: BuildingOffice },
-		{ name: 'BitSur', area: 'Dev tools', icon: Code },
-		{ name: 'Circuita', area: 'Hardware libre', icon: Circuitry }
-	] as const;
+	const sponsorsObj = import.meta.glob('$lib/assets/sponsors/*', {
+		eager: true,
+		import: 'default'
+	});
+	const sponsors = Object.values(sponsorsObj) as string[];
 
 	const loopedSponsors = [...sponsors, ...sponsors];
 	const reducedMotion = new MediaQuery('(prefers-reduced-motion: reduce)', false);
@@ -48,7 +37,7 @@
 		sponsorsAnimation = animate(viewport, {
 			scrollLeft: [0, resetPoint],
 			ease: 'linear',
-			duration: 24000,
+			duration: 48000,
 			loop: true
 		});
 
@@ -83,25 +72,16 @@
 			bind:this={viewport}
 			role="region"
 			aria-label="Banda de patrocinadores con desplazamiento continuo"
-			class="flex gap-4 overflow-x-scroll px-4 py-5"
+			class="no-scrollbar flex gap-4 overflow-x-scroll px-4 py-5"
 			onpointerenter={pauseAnimation}
 			onpointerleave={resumeAnimation}
 			onfocusin={pauseAnimation}
 			onfocusout={resumeAnimation}
 		>
-			{#each loopedSponsors as sponsor, index (`${sponsor.name}-${index}`)}
-				{@const Icon = sponsor.icon}
-				<article
-					class="flex min-w-56 items-center gap-3 rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-3 shadow-sm"
-				>
-					<div
-						class="grid h-10 w-10 place-items-center rounded-xl bg-flisol-blue-600/10 text-flisol-blue-600"
-					>
-						<Icon size={20} weight="duotone" />
-					</div>
+			{#each loopedSponsors as sponsor, index (index)}
+				<article class="flex min-w-56 items-center justify-center gap-3 overflow-clip px-4 py-3">
 					<div>
-						<p class="text-sm font-semibold text-slate-800">{sponsor.name}</p>
-						<p class="text-xs text-slate-500">{sponsor.area}</p>
+						<img src={sponsor} class="max-h-20" alt="Logo de sponsor" />
 					</div>
 				</article>
 			{/each}
