@@ -2,31 +2,55 @@
 	import { CalendarDotsIcon, MapPinIcon, UsersThreeIcon } from 'phosphor-svelte';
 	import LogoHero from '$lib/assets/logo-hero.svg';
 
+	const eventInfo = [
+		{
+			label: 'Fecha y horario',
+			value: 'Sábado 25 de abril de 2026, 14:00 horas en adelante',
+			icon: CalendarDotsIcon
+		},
+		{
+			label: 'Sede',
+			value: 'Universidad Tecnológica Intercontinental UTIC, Caaguazú',
+			icon: MapPinIcon
+		},
+		{
+			label: 'Acceso',
+			value: 'Acceso libre para todos',
+			icon: UsersThreeIcon
+		}
+	] as const;
+
 	const highlights = [
 		{ label: 'Asistentes esperados', value: '100+' },
 		{ label: 'Charlas, talleres y stands', value: '10' },
 		{ label: 'Organizaciones invitadas', value: '4' }
-	];
+	] as const;
 </script>
 
 <section
-	class="relative overflow-hidden rounded-[calc(var(--radius-card)+10px)] border border-flisol-blue-600/20 bg-linear-to-br from-white via-white to-flisol-blue-300/10 p-6 shadow-xl sm:p-10"
+	class="relative overflow-hidden rounded-[calc(var(--radius-card)+10px)] border border-flisol-blue-600/20 bg-linear-to-br from-white via-white to-flisol-blue-300/8 p-6 shadow-xl sm:p-10"
 >
 	<div
-		class="absolute -top-16 -left-20 h-56 w-56 rounded-full bg-flisol-lime-400/30 blur-3xl"
+		class="pointer-events-none absolute -top-20 -left-16 h-56 w-56 rounded-full bg-flisol-lime-400/26 blur-3xl"
 	></div>
 	<div
-		class="absolute right-0 -bottom-20 h-60 w-60 rounded-full bg-flisol-orange-400/25 blur-3xl"
+		class="pointer-events-none absolute right-0 -bottom-24 h-64 w-64 rounded-full bg-flisol-orange-400/26 blur-3xl"
+	></div>
+	<div class="hero-lines pointer-events-none absolute inset-0 opacity-70"></div>
+	<div
+		class="pointer-events-none absolute inset-y-0 right-0 w-[38%] bg-linear-to-l from-flisol-blue-600/8 to-transparent"
 	></div>
 
-	<div class="relative grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-center">
+	<div class="relative grid gap-10 lg:grid-cols-2 lg:items-center">
 		<div class="space-y-6">
-			<img src={LogoHero} alt="Logo de FLISOL Caaguazu 2026" class="w-180" />
-			<p class="max-w-[58ch] text-base leading-relaxed text-slate-700 sm:text-lg">
-				Un día para aprender, compartir y construir comunidad alrededor del software libre. Conecta
-				con estudiantes, profesionales y veni a aprender de charlas, talleres y actividades
-				prácticas sobre tecnología abierta.
-			</p>
+			<div class="space-y-4">
+				<img src={LogoHero} alt="Logo de FLISOL Caaguazu 2026" class="w-72 sm:w-130" />
+				<p class="max-w-[58ch] text-base leading-relaxed text-slate-700 sm:text-lg">
+					Un día para aprender, compartir y construir comunidad alrededor del software libre.
+					Conecta con estudiantes, profesionales y veni a aprender de charlas, talleres y
+					actividades prácticas sobre tecnología abierta.
+				</p>
+			</div>
 
 			<div class="flex flex-wrap gap-3">
 				<a
@@ -44,37 +68,51 @@
 			</div>
 		</div>
 
-		<div
-			class="space-y-5 rounded-[calc(var(--radius-card)+4px)] border border-flisol-blue-600/20 bg-white/90 p-6 shadow-sm backdrop-blur"
-		>
-			<div class="space-y-3">
-				<p class="text-xs font-semibold tracking-[0.14em] text-flisol-blue-600 uppercase">
-					Información del evento
-				</p>
-				<ul class="space-y-2 text-sm text-slate-700">
-					<li class="flex items-center gap-2">
-						<CalendarDotsIcon size={18} class="text-flisol-blue-600" />
-						Sábado 25 de abril de 2026, 14:00 horas en adelante
-					</li>
-					<li class="flex items-center gap-2">
-						<MapPinIcon size={18} class="text-flisol-blue-600" />
-						Universidad Tecnológica Intercontinental UTIC, Caaguazú
-					</li>
-					<li class="flex items-center gap-2">
-						<UsersThreeIcon size={18} class="text-flisol-blue-600" />
-						Acceso libre para todos
-					</li>
-				</ul>
-			</div>
+		<div class="lg:pl-4">
+			<aside
+				class="h-full rounded-[calc(var(--radius-card)+6px)] border border-flisol-blue-600/25 bg-white/95 p-6 shadow-md sm:p-7"
+			>
+				<h2 class="text-2xl leading-tight font-semibold text-slate-900">Información del evento</h2>
 
-			<div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-				{#each highlights as item (item.label)}
-					<div class="rounded-2xl border border-flisol-blue-300/25 bg-flisol-blue-300/5 px-4 py-3">
-						<p class="text-2xl font-semibold text-flisol-blue-600">{item.value}</p>
-						<p class="text-xs font-medium text-slate-600">{item.label}</p>
-					</div>
-				{/each}
-			</div>
+				<dl class="mt-5 divide-y divide-flisol-blue-300/30 border-y border-flisol-blue-300/30">
+					{#each eventInfo as item (item.label)}
+						{@const Icon = item.icon}
+						<div class="grid grid-cols-[2rem_1fr] items-start gap-3 py-3">
+							<div
+								class="grid h-8 w-8 place-items-center rounded-lg bg-flisol-blue-300/10 text-flisol-blue-600"
+							>
+								<Icon size={17} weight="duotone" />
+							</div>
+							<div>
+								<dt class="text-[0.62rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
+									{item.label}
+								</dt>
+								<dd class="mt-1 text-sm leading-snug text-slate-800">{item.value}</dd>
+							</div>
+						</div>
+					{/each}
+				</dl>
+
+				<div class="mt-5 grid gap-2 sm:grid-cols-3">
+					{#each highlights as item (item.label)}
+						<div class="rounded-xl border border-flisol-blue-300/25 bg-white/85 px-3 py-3">
+							<p class="text-2xl leading-none font-semibold text-flisol-blue-600">{item.value}</p>
+							<p class="mt-1 text-xs font-medium text-slate-600">{item.label}</p>
+						</div>
+					{/each}
+				</div>
+			</aside>
 		</div>
 	</div>
 </section>
+
+<style>
+	.hero-lines {
+		background-image: repeating-linear-gradient(
+			115deg,
+			color-mix(in oklab, var(--flisol-blue-300) 11%, transparent) 0 1px,
+			transparent 1px 18px
+		);
+		mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.92), rgb(0 0 0 / 0.4) 60%, transparent 85%);
+	}
+</style>
