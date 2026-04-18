@@ -44,12 +44,12 @@
 			</div>
 
 			<a
-				href="https://flisol.info"
+				href="https://flisolczu.org/"
 				target="_blank"
 				rel="noreferrer"
 				class="inline-flex items-center justify-center gap-2 rounded-full bg-flisol-lime-400 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-white"
 			>
-				Ir al formulario
+				Ir al formulario (no implementado)
 				<ArrowSquareOutIcon size={18} weight="bold" />
 			</a>
 		</section>
