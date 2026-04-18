@@ -4,7 +4,7 @@
 
 		<p class="text-sm text-slate-700">
 			Sitio web de FLISOL 2026 Caaguazú publicado como código abierto bajo la licencia <a
-				href="https://github.com/cachesdev/flisolczu"
+				href="https://github.com/cachesdev/flisolczu/blob/main/packages/flisolczu/LICENSE"
 				target="_blank"
 				rel="noreferrer"
 				class="text-flisol-blue-600 underline-offset-2 transition hover:underline">AGPL-3.0</a
