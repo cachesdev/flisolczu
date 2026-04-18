@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+
+@theme inline {
+	/* Fonts */
+	--font-sans: 'Geist Variable', sans-serif;
+
+	/* Visual rhythm aliases */
+	--radius-card: var(--radius);
+
+	/* Theme token aliases */
+	--color-flisol-blue-600: var(--flisol-blue-600);
+	--color-flisol-blue-400: var(--flisol-blue-400);
+	--color-flisol-blue-300: var(--flisol-blue-300);
+	--color-flisol-lime-400: var(--flisol-lime-400);
+	--color-flisol-orange-400: var(--flisol-orange-400);
+	--color-flisol-orange-500: var(--flisol-orange-500);
+
+	/* Layouting */
+	--spacing-home-width: var(--layout-home-width);
+}
+
+:root {
+	--flisol-blue-400: rgb(0 85 212);
+	--flisol-blue-300: rgb(0 113 222);
+	--flisol-blue-600: rgb(0 44 128);
+	--flisol-lime-400: rgb(204 255 0);
+	--flisol-orange-400: rgb(255 163 65);
+	--flisol-orange-500: rgb(255 142 42);
+
+	--layout-home-width: 1400px;
+}
