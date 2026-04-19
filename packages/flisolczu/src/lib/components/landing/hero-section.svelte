@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { CalendarDotsIcon, MapPinIcon, UsersThreeIcon } from 'phosphor-svelte';
 	import LogoHero from '$lib/assets/logo-hero.svg';
+	import { MediaQuery } from 'svelte/reactivity';
+
+	const sm = new MediaQuery('min-width: 640px');
 
 	const eventInfo = [
 		{
@@ -28,7 +31,7 @@
 </script>
 
 <section
-	class="relative overflow-hidden rounded-[calc(var(--radius-card)+10px)] border border-flisol-blue-600/20 bg-linear-to-br from-white via-white to-flisol-blue-300/8 p-6 shadow-xl sm:p-10"
+	class="relative overflow-hidden rounded-[calc(var(--radius-card)+10px)] border border-flisol-blue-600/20 bg-linear-to-br from-white via-white to-flisol-blue-300/8 p-4 shadow-xl sm:p-10"
 >
 	<div
 		class="pointer-events-none absolute -top-20 -left-16 h-56 w-56 rounded-full bg-flisol-lime-400/26 blur-3xl"
@@ -44,15 +47,16 @@
 	<div class="relative grid gap-10 lg:grid-cols-2 lg:items-center">
 		<div class="space-y-6">
 			<div class="space-y-4">
-				<img src={LogoHero} alt="Logo de FLISOL Caaguazu 2026" class="w-72 sm:w-130" />
+				<img src={LogoHero} alt="Logo de FLISOL Caaguazu 2026" class="w-86 sm:w-130" />
 				<p class="max-w-[58ch] text-base leading-relaxed text-slate-700 sm:text-lg">
 					Un día para aprender, compartir y construir comunidad alrededor del software libre.
-					Conecta con estudiantes, profesionales y veni a aprender de charlas, talleres y
-					actividades prácticas sobre tecnología abierta.
+					{sm.current
+						? 'Conecta con estudiantes, profesionales y veni a aprender de charlas, talleres y actividades prácticas sobre tecnología abierta.'
+						: ''}
 				</p>
 			</div>
 
-			<div class="flex flex-wrap gap-3">
+			<div class="-my-3 flex flex-wrap gap-3">
 				<a
 					href="#agenda"
 					class="inline-flex items-center justify-center rounded-full bg-flisol-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-flisol-orange-400"
