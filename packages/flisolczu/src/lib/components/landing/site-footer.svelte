@@ -27,7 +27,7 @@
 				rel="noreferrer"
 				class="font-semibold text-flisol-blue-600 underline-offset-2 transition hover:underline"
 			>
-				Gustavo Domínguez AKA cachesDev</a
+				Gustavo Domínguez AKA cachesdev</a
 			>
 			.
 		</p>
