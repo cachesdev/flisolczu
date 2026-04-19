@@ -50,10 +50,7 @@
 
 <section aria-labelledby="patrocinadores" class="space-y-4">
 	<div class="flex flex-wrap items-center justify-between gap-3">
-		<h2
-			id="patrocinadores"
-			class="text-sm font-semibold tracking-[0.16em] text-flisol-blue-600 uppercase"
-		>
+		<h2 class="text-sm font-semibold tracking-[0.16em] text-flisol-blue-600 uppercase">
 			Patrocinan esta edición
 		</h2>
 	</div>

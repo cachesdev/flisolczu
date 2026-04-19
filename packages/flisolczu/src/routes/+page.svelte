@@ -30,7 +30,6 @@
 		<ScheduleSection />
 
 		<section
-			id="registro"
 			class="grid gap-6 rounded-[calc(var(--radius-card)+10px)] border border-flisol-blue-600/20 bg-flisol-blue-600 px-6 py-8 text-white shadow-lg sm:px-8 md:grid-cols-[1fr_auto] md:items-center"
 		>
 			<div>

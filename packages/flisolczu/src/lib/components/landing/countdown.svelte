@@ -141,78 +141,78 @@
 	});
 </script>
 
-<section
-	id="cuenta-regresiva"
-	class="relative overflow-hidden rounded-[calc(var(--radius-card)+8px)] border border-flisol-blue-300/35 bg-white/92 p-6 shadow-sm sm:p-7"
->
-	<div
-		class="pointer-events-none absolute -top-18 -right-12 h-44 w-44 rounded-full bg-flisol-lime-400/24 blur-3xl"
-	></div>
-	<div
-		class="pointer-events-none absolute -bottom-20 -left-16 h-48 w-48 rounded-full bg-flisol-blue-300/18 blur-3xl"
-	></div>
-
-	<div class="relative">
-		<h2 class="mb-2 text-sm font-semibold tracking-[0.16em] text-flisol-blue-600 uppercase">
-			Countdown
-		</h2>
-
+<div>
+	<h2 class="mb-4 text-sm font-semibold tracking-[0.16em] text-flisol-blue-600 uppercase">
+		Cuenta regresiva
+	</h2>
+	<section
+		class="relative overflow-hidden rounded-[calc(var(--radius-card)+8px)] border border-flisol-blue-300/35 bg-white/92 p-6 shadow-sm sm:p-7"
+	>
 		<div
-			class="grid grid-cols-2 gap-3 sm:grid-cols-4"
-			role="timer"
-			aria-label="Tiempo restante para el inicio del FLISOL 2026 Caaguazú"
-		>
+			class="pointer-events-none absolute -top-18 -right-12 h-44 w-44 rounded-full bg-flisol-lime-400/24 blur-3xl"
+		></div>
+		<div
+			class="pointer-events-none absolute -bottom-20 -left-16 h-48 w-48 rounded-full bg-flisol-blue-300/18 blur-3xl"
+		></div>
+
+		<div class="relative">
 			<div
-				class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+				class="grid grid-cols-2 gap-3 sm:grid-cols-4"
+				role="timer"
+				aria-label="Tiempo restante para el inicio del FLISOL 2026 Caaguazú"
 			>
-				<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
-					<NumberFlow value={countdownDisplay.days} format={{ useGrouping: false }} />
-				</p>
-				<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
-					Días
-				</p>
+				<div
+					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+				>
+					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+						<NumberFlow value={countdownDisplay.days} format={{ useGrouping: false }} />
+					</p>
+					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
+						Días
+					</p>
+				</div>
+
+				<div
+					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+				>
+					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+						<NumberFlow value={countdownDisplay.hours} format={TWO_DIGITS_FORMAT} />
+					</p>
+					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
+						Horas
+					</p>
+				</div>
+
+				<div
+					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+				>
+					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+						<NumberFlow value={countdownDisplay.minutes} format={TWO_DIGITS_FORMAT} />
+					</p>
+					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
+						Minutos
+					</p>
+				</div>
+
+				<div
+					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+				>
+					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+						<NumberFlow value={countdownDisplay.seconds} format={TWO_DIGITS_FORMAT} />
+					</p>
+					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
+						Segundos
+					</p>
+				</div>
 			</div>
 
-			<div
-				class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
-			>
-				<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
-					<NumberFlow value={countdownDisplay.hours} format={TWO_DIGITS_FORMAT} />
+			{#if countdownDisplay.ended}
+				<p
+					class="mt-2 rounded-xl border border-flisol-lime-400/60 bg-flisol-lime-400/20 px-4 py-3 text-sm font-medium text-slate-800"
+				>
+					El evento ya comenzó. Te esperamos en la sede.
 				</p>
-				<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
-					Horas
-				</p>
-			</div>
-
-			<div
-				class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
-			>
-				<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
-					<NumberFlow value={countdownDisplay.minutes} format={TWO_DIGITS_FORMAT} />
-				</p>
-				<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
-					Minutos
-				</p>
-			</div>
-
-			<div
-				class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
-			>
-				<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
-					<NumberFlow value={countdownDisplay.seconds} format={TWO_DIGITS_FORMAT} />
-				</p>
-				<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
-					Segundos
-				</p>
-			</div>
+			{/if}
 		</div>
-
-		{#if countdownDisplay.ended}
-			<p
-				class="mt-2 rounded-xl border border-flisol-lime-400/60 bg-flisol-lime-400/20 px-4 py-3 text-sm font-medium text-slate-800"
-			>
-				El evento ya comenzó. Te esperamos en la sede.
-			</p>
-		{/if}
-	</div>
-</section>
+	</section>
+</div>

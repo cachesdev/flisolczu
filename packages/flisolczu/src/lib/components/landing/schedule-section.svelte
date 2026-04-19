@@ -109,13 +109,13 @@
 	] as const;
 </script>
 
-<section id="agenda" aria-labelledby="agenda-dia" class="space-y-5">
+<section aria-labelledby="agenda-dia" class="space-y-5">
 	<div class="flex flex-wrap items-end justify-between gap-3">
 		<div>
 			<p class="text-xs font-semibold tracking-[0.14em] text-flisol-blue-600 uppercase">
 				Programa FLISOL 2026
 			</p>
-			<h2 id="agenda-dia" class="text-2xl font-semibold text-flisol-blue-600 sm:text-3xl">
+			<h2 class="text-2xl font-semibold text-flisol-blue-600 sm:text-3xl">
 				Agenda preliminar · horario a definir
 			</h2>
 		</div>
