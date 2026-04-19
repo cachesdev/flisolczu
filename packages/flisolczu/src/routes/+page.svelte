@@ -19,7 +19,7 @@
 	class="min-h-screen bg-[radial-gradient(circle_at_0%_0%,color-mix(in_oklab,var(--flisol-lime-400)_20%,white),transparent_40%),radial-gradient(circle_at_100%_0%,color-mix(in_oklab,var(--flisol-orange-400)_20%,white),transparent_42%),linear-gradient(180deg,#ffffff_0%,#f8fbff_60%,#ffffff_100%)] font-sans"
 >
 	<main
-		class="mx-auto flex max-w-(--layout-home-width) flex-col gap-10 px-3 py-6 sm:px-8 sm:py-12 lg:gap-14 lg:px-12"
+		class="mx-auto flex max-w-(--layout-home-width) flex-col gap-8 px-2 py-5 sm:gap-10 sm:px-8 sm:py-12 lg:gap-14 lg:px-12"
 	>
 		<HeroSection />
 
@@ -30,7 +30,7 @@
 		<ScheduleSection />
 
 		<section
-			class="grid gap-6 rounded-[calc(var(--radius-card)+10px)] border border-flisol-blue-600/20 bg-flisol-blue-600 px-5 py-7 text-white shadow-lg sm:px-8 md:grid-cols-[1fr_auto] md:items-center"
+			class="grid gap-5 rounded-3xl border border-flisol-blue-600/15 bg-flisol-blue-600 px-4 py-6 text-white sm:gap-6 sm:rounded-[calc(var(--radius-card)+10px)] sm:border-flisol-blue-600/20 sm:px-8 sm:py-7 sm:shadow-lg md:grid-cols-[1fr_auto] md:items-center"
 		>
 			<div>
 				<h2 class="mt-3 text-2xl leading-tight font-semibold sm:text-3xl">

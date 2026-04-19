@@ -125,9 +125,9 @@
 		{#each schedule as slot (`${slot.start}-${slot.title}`)}
 			{@const Icon = iconByType[slot.type]}
 			<li
-				class="rounded-[calc(var(--radius-card)+6px)] border border-flisol-blue-300/30 bg-white p-4 shadow-sm sm:p-5"
+				class="rounded-2xl border border-flisol-blue-300/22 bg-white/82 p-3 sm:rounded-[calc(var(--radius-card)+6px)] sm:border-flisol-blue-300/30 sm:bg-white sm:p-5 sm:shadow-sm"
 			>
-				<div class="grid gap-4 md:grid-cols-[7rem_1fr_auto] md:items-center">
+				<div class="grid gap-3 sm:gap-4 md:grid-cols-[7rem_1fr_auto] md:items-center">
 					<div class="rounded-xl bg-flisol-blue-600/10 px-3 py-2 text-center md:text-left">
 						<p class="text-base font-semibold text-flisol-blue-600">{slot.start}</p>
 						<p class="text-xs text-slate-500">{slot.end}</p>
@@ -139,7 +139,7 @@
 						>
 							{slot.format}
 						</p>
-						<h3 class="text-base font-semibold text-slate-900 sm:text-lg">{slot.title}</h3>
+						<h3 class="text-[0.95rem] font-semibold text-slate-900 sm:text-lg">{slot.title}</h3>
 						<p class="mt-1 text-sm leading-relaxed text-slate-600">{slot.details}</p>
 						<p class="mt-2 text-xs font-medium tracking-wide text-slate-500 uppercase">
 							{slot.people}

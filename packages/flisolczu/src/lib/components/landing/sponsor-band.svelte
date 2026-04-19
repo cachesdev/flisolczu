@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { animate } from 'animejs';
-	import { MediaQuery } from 'svelte/reactivity';
 
 	const sponsorsObj = import.meta.glob('$lib/assets/sponsors/*', {
 		eager: true,
@@ -9,10 +8,48 @@
 	const sponsors = Object.values(sponsorsObj) as string[];
 
 	const loopedSponsors = [...sponsors, ...sponsors];
-	const reducedMotion = new MediaQuery('(prefers-reduced-motion: reduce)', false);
-
-	let viewport = $state<HTMLDivElement | null>(null);
 	let sponsorsAnimation: ReturnType<typeof animate> | null = null;
+
+	const sponsorTicker = (node: HTMLDivElement) => {
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+		const stop = () => {
+			sponsorsAnimation?.cancel();
+			sponsorsAnimation = null;
+			node.scrollLeft = 0;
+		};
+
+		const start = () => {
+			if (reducedMotion.matches) return;
+
+			const resetPoint = node.scrollWidth / 2;
+
+			sponsorsAnimation?.cancel();
+			sponsorsAnimation = animate(node, {
+				scrollLeft: [0, resetPoint],
+				ease: 'linear',
+				duration: 48000,
+				loop: true
+			});
+		};
+
+		const syncMotionPreference = () => {
+			if (reducedMotion.matches) {
+				stop();
+				return;
+			}
+
+			start();
+		};
+
+		syncMotionPreference();
+		reducedMotion.addEventListener('change', syncMotionPreference);
+
+		return () => {
+			reducedMotion.removeEventListener('change', syncMotionPreference);
+			stop();
+		};
+	};
 
 	const pauseAnimation = () => {
 		sponsorsAnimation?.pause();
@@ -21,31 +58,6 @@
 	const resumeAnimation = () => {
 		sponsorsAnimation?.play();
 	};
-
-	$effect(() => {
-		if (!viewport) return;
-
-		if (reducedMotion.current) {
-			sponsorsAnimation?.cancel();
-			sponsorsAnimation = null;
-			return;
-		}
-
-		const resetPoint = viewport.scrollWidth / 2;
-
-		sponsorsAnimation?.cancel();
-		sponsorsAnimation = animate(viewport, {
-			scrollLeft: [0, resetPoint],
-			ease: 'linear',
-			duration: 48000,
-			loop: true
-		});
-
-		return () => {
-			sponsorsAnimation?.cancel();
-			sponsorsAnimation = null;
-		};
-	});
 </script>
 
 <section aria-labelledby="patrocinadores" class="space-y-4">
@@ -56,7 +68,7 @@
 	</div>
 
 	<div
-		class="relative overflow-hidden rounded-[calc(var(--radius-card)+8px)] border border-flisol-blue-600/20 bg-white/90 shadow-sm"
+		class="relative overflow-hidden rounded-3xl border border-flisol-blue-600/15 bg-white/85 sm:rounded-[calc(var(--radius-card)+8px)] sm:border-flisol-blue-600/20 sm:bg-white/90 sm:shadow-sm"
 	>
 		<div
 			class="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-linear-to-r from-white via-white/90 to-transparent"
@@ -66,10 +78,10 @@
 		></div>
 
 		<div
-			bind:this={viewport}
+			{@attach sponsorTicker}
 			role="region"
 			aria-label="Banda de patrocinadores con desplazamiento continuo"
-			class="no-scrollbar flex gap-4 overflow-x-scroll px-4 py-5"
+			class="no-scrollbar flex gap-3 overflow-x-scroll px-3 py-4 sm:gap-4 sm:px-4 sm:py-5"
 			onpointerenter={pauseAnimation}
 			onpointerleave={resumeAnimation}
 			onfocusin={pauseAnimation}

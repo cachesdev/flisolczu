@@ -146,7 +146,7 @@
 		Cuenta regresiva
 	</h2>
 	<section
-		class="relative overflow-hidden rounded-[calc(var(--radius-card)+8px)] border border-flisol-blue-300/35 bg-white/92 p-6 shadow-sm sm:p-7"
+		class="relative overflow-hidden rounded-3xl border border-flisol-blue-300/20 bg-white/85 p-4 sm:rounded-[calc(var(--radius-card)+8px)] sm:border-flisol-blue-300/35 sm:bg-white/92 sm:p-7 sm:shadow-sm"
 	>
 		<div
 			class="pointer-events-none absolute -top-18 -right-12 h-44 w-44 rounded-full bg-flisol-lime-400/24 blur-3xl"
@@ -157,14 +157,14 @@
 
 		<div class="relative">
 			<div
-				class="grid grid-cols-2 gap-3 sm:grid-cols-4"
+				class="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3"
 				role="timer"
 				aria-label="Tiempo restante para el inicio del FLISOL 2026 Caaguazú"
 			>
 				<div
-					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+					class="rounded-2xl border border-flisol-blue-300/25 bg-white px-3 py-3 text-center sm:px-4 sm:py-4 sm:shadow-sm"
 				>
-					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+					<p class="text-3xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
 						<NumberFlow value={countdownDisplay.days} format={{ useGrouping: false }} />
 					</p>
 					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
@@ -173,9 +173,9 @@
 				</div>
 
 				<div
-					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+					class="rounded-2xl border border-flisol-blue-300/25 bg-white px-3 py-3 text-center sm:px-4 sm:py-4 sm:shadow-sm"
 				>
-					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+					<p class="text-3xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
 						<NumberFlow value={countdownDisplay.hours} format={TWO_DIGITS_FORMAT} />
 					</p>
 					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
@@ -184,9 +184,9 @@
 				</div>
 
 				<div
-					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+					class="rounded-2xl border border-flisol-blue-300/25 bg-white px-3 py-3 text-center sm:px-4 sm:py-4 sm:shadow-sm"
 				>
-					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+					<p class="text-3xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
 						<NumberFlow value={countdownDisplay.minutes} format={TWO_DIGITS_FORMAT} />
 					</p>
 					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
@@ -195,9 +195,9 @@
 				</div>
 
 				<div
-					class="rounded-2xl border border-flisol-blue-300/30 bg-white px-4 py-4 text-center shadow-sm"
+					class="rounded-2xl border border-flisol-blue-300/25 bg-white px-3 py-3 text-center sm:px-4 sm:py-4 sm:shadow-sm"
 				>
-					<p class="text-4xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
+					<p class="text-3xl leading-none font-semibold text-flisol-blue-600 sm:text-5xl">
 						<NumberFlow value={countdownDisplay.seconds} format={TWO_DIGITS_FORMAT} />
 					</p>
 					<p class="mt-2 text-[0.65rem] font-semibold tracking-[0.14em] text-slate-500 uppercase">
