@@ -1,11 +1,19 @@
 <script lang="ts">
 	import { animate } from 'animejs';
 
-	const sponsorsObj = import.meta.glob('$lib/assets/sponsors/*', {
-		eager: true,
-		import: 'default'
-	});
-	const sponsors = Object.values(sponsorsObj) as string[];
+	type SponsorImageModule = {
+		default: string;
+	};
+
+	const sponsorsObj = import.meta.glob(
+		'$lib/assets/sponsors/*.{avif,AVIF,gif,GIF,heif,HEIF,jpeg,JPEG,jpg,JPG,png,PNG,tiff,TIFF,webp,WEBP}',
+		{
+			eager: true,
+			query: { enhanced: true, w: '560;280', format: 'avif;webp' }
+		}
+	) as Record<string, SponsorImageModule>;
+
+	const sponsors = Object.values(sponsorsObj).map((module) => module.default);
 
 	const loopedSponsors = [...sponsors, ...sponsors];
 	let sponsorsAnimation: ReturnType<typeof animate> | null = null;
@@ -90,7 +98,12 @@
 			{#each loopedSponsors as sponsor, index (index)}
 				<article class="flex min-w-56 items-center justify-center gap-3 overflow-clip px-4 py-3">
 					<div>
-						<img src={sponsor} class="max-h-20" alt="Logo de sponsor" />
+						<enhanced:img
+							src={sponsor}
+							class="max-h-20 w-auto object-contain"
+							alt="Logo de sponsor"
+							loading="lazy"
+						/>
 					</div>
 				</article>
 			{/each}
