@@ -109,7 +109,7 @@
 	] as const;
 </script>
 
-<section aria-labelledby="agenda-dia" class="space-y-5">
+<section id="agenda" aria-labelledby="agenda-dia" class="space-y-5">
 	<div class="flex flex-wrap items-end justify-between gap-3">
 		<div>
 			<p class="text-xs font-semibold tracking-[0.14em] text-flisol-blue-600 uppercase">

@@ -9,10 +9,13 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 		'listado',
 		{
 			id: { type: 'bigserial', primaryKey: true },
+			cedula: { type: 'text', notNull: true },
 			nombre: { type: 'text', notNull: true },
 			apellido: { type: 'text', notNull: true },
 			estado_pago: { type: 'boolean', notNull: true },
-			metodo_pago: { type: 'text', notNull: true }
+			metodo_pago: { type: 'text', notNull: true },
+			duplicado: { type: 'boolean', notNull: true },
+			created_at: { type: 'timestamp', notNull: true, default: pgm.func('NOW()') }
 		},
 		{ ifNotExists: true }
 	);

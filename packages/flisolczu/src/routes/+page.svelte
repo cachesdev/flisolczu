@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { ArrowSquareOutIcon } from 'phosphor-svelte';
 	import CountdownSection from '$lib/components/landing/countdown.svelte';
 	import HeroSection from '$lib/components/landing/hero-section.svelte';
 	import ScheduleSection from '$lib/components/landing/schedule-section.svelte';
 	import SiteFooter from '$lib/components/landing/site-footer.svelte';
 	import SponsorBand from '$lib/components/landing/sponsor-band.svelte';
+	import CertificationRegistrationSection from '../lib/components/landing/certification-registration-section.svelte';
 
 	const SITE_URL = 'https://flisolczu.org';
 	const PAGE_URL = `${SITE_URL}/`;
@@ -74,29 +74,7 @@
 
 		<ScheduleSection />
 
-		<section
-			class="grid gap-5 rounded-3xl border border-flisol-blue-600/15 bg-flisol-blue-600 px-4 py-6 text-white sm:gap-6 sm:rounded-[calc(var(--radius-card)+10px)] sm:border-flisol-blue-600/20 sm:px-8 sm:py-7 sm:shadow-lg md:grid-cols-[1fr_auto] md:items-center"
-		>
-			<div>
-				<h2 class="mt-3 text-2xl leading-tight font-semibold sm:text-3xl">
-					¿Querés tu certificado de participación?
-				</h2>
-				<p class="mt-2 max-w-[50ch] text-sm leading-relaxed text-white/85 sm:text-base">
-					Registrate para obtener tu certificado de participación. El certificado es una constancia
-					oficial que acredita tu asistencia y participación en el FLISOL 2026 Caaguazu.
-				</p>
-			</div>
-
-			<a
-				href="https://flisolczu.org/"
-				target="_blank"
-				rel="noreferrer"
-				class="inline-flex items-center justify-center gap-2 rounded-full bg-flisol-lime-400 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-white"
-			>
-				Ir al formulario
-				<ArrowSquareOutIcon size={18} weight="bold" />
-			</a>
-		</section>
+		<CertificationRegistrationSection />
 	</main>
 </div>
 
