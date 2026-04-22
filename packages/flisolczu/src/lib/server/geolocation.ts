@@ -18,7 +18,7 @@ export async function getCountryFromIP(event: RequestEvent): Promise<string | nu
 
 	try {
 		// ip-api.com es gratis, 45 requests por minuto
-		const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,countryCode`);
+		const response = await fetch(`http://ip-api.com/json/${ip}`);
 
 		if (!response.ok) {
 			console.error('Error en API de geolocalizacion:', response.status);
@@ -26,6 +26,7 @@ export async function getCountryFromIP(event: RequestEvent): Promise<string | nu
 		}
 
 		const data = await response.json();
+		console.log(data);
 
 		if (data.status === 'success') {
 			return data.countryCode;
