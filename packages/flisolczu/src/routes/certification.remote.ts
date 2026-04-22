@@ -4,7 +4,12 @@ import { db } from '$lib/server/db';
 import { listado } from '$lib/server/db/schema';
 import { certificationRegistrationSchema } from '$lib/validation/certification-registration';
 import { eventState } from '$lib/state/event.svelte';
-import { getCountryFromIP, isFromParaguay, isDevIP } from '$lib/server/geolocation';
+import {
+	getCountryFromIP,
+	isFromParaguay,
+	isDevIP,
+	getRealClientIP
+} from '$lib/server/geolocation';
 import { checkRateLimit } from '$lib/server/rate-limiter';
 import type { EstadoPago } from '$lib/config/certification-form';
 
@@ -16,7 +21,7 @@ export const submitCertificationRegistration = form(
 		}
 
 		const event = getRequestEvent();
-		const ip = event.getClientAddress();
+		const ip = getRealClientIP(event);
 		const isDev = isDevIP(ip);
 
 		// Skipeamos geolock y ratelimit si la IP es desarrollo

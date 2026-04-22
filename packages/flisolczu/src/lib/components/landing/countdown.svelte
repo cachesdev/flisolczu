@@ -31,12 +31,7 @@
 				role="timer"
 				aria-label="Tiempo restante para el inicio del FLISOL 2026 Caaguazú"
 			>
-				{#each [
-					{ value: eventState.countdown.days, label: 'Días', format: { useGrouping: false } },
-					{ value: eventState.countdown.hours, label: 'Horas', format: TWO_DIGITS },
-					{ value: eventState.countdown.minutes, label: 'Minutos', format: TWO_DIGITS },
-					{ value: eventState.countdown.seconds, label: 'Segundos', format: TWO_DIGITS }
-				] as { value, label, format } (label)}
+				{#each [{ value: eventState.countdown.days, label: 'Días', format: { useGrouping: false } }, { value: eventState.countdown.hours, label: 'Horas', format: TWO_DIGITS }, { value: eventState.countdown.minutes, label: 'Minutos', format: TWO_DIGITS }, { value: eventState.countdown.seconds, label: 'Segundos', format: TWO_DIGITS }] as { value, label, format } (label)}
 					<div
 						class="rounded-2xl border border-flisol-blue-300/25 bg-white px-3 py-3 text-center sm:px-4 sm:py-4 sm:shadow-sm"
 					>

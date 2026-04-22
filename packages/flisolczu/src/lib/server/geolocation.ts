@@ -13,9 +13,14 @@ export function isDevIP(ip: string): boolean {
 	);
 }
 
+export function getRealClientIP(event: RequestEvent): string {
+	return (
+		event.request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? event.getClientAddress()
+	);
+}
+
 export async function getCountryFromIP(event: RequestEvent): Promise<string | null> {
-	const ip =
-		event.request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? event.getClientAddress();
+	const ip = getRealClientIP(event);
 
 	try {
 		// ip-api.com es gratis, 45 requests por minuto
