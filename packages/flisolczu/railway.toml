@@ -1,10 +1,9 @@
 [build]
-builder = "dockerfile"
-dockerfilePath = "docker/production/Dockerfile"
+builder = "RAILPACK"
 
 [deploy]
-startCommand = "./entrypoint.sh"
+startCommand = "pnpm start"
 healthcheckPath = "/"
 healthcheckTimeout = 100
-restartPolicyType = "on_failure"
+restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
