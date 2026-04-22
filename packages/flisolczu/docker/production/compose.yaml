@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: docker/production/Dockerfile
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - CERT_REGISTRATION_DISABLED=${CERT_REGISTRATION_DISABLED:-}
+      - PORT=${PORT:-3000}
+      - HOST=0.0.0.0
+    restart: unless-stopped

@@ -15,8 +15,11 @@
 		"format": "prettier --write .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
-		"docker:up": "pnpm exec dotenvx run -f .env -- docker compose -f compose.yaml up -d",
-		"docker:down": "pnpm exec dotenvx run -f .env -- docker compose -f compose.yaml down",
+		"docker:dev:up": "pnpm exec dotenvx run -f .env -- docker compose -f docker/dev/compose.yaml up -d",
+		"docker:dev:down": "pnpm exec dotenvx run -f .env -- docker compose -f docker/dev/compose.yaml down",
+		"docker:prod:build": "docker compose -f docker/production/compose.yaml build",
+		"docker:prod:up": "docker compose -f docker/production/compose.yaml up -d",
+		"docker:prod:down": "docker compose -f docker/production/compose.yaml down",
 		"db:pull": "NODE_OPTIONS='--import tsx' pnpm exec dotenvx run -f .env -- tsx scripts/preprocess-drizzle.ts",
 		"db:migrate": "pnpm exec dotenvx run -f .env -- node-pg-migrate -j ts --tsx true --tsconfig tsconfig.json",
 		"db:migrate:up": "pnpm exec dotenvx run -f .env -- node-pg-migrate up -j ts --tsx true --tsconfig tsconfig.json",
@@ -57,9 +60,12 @@
 	"dependencies": {
 		"@dotenvx/dotenvx": "^1.61.0",
 		"@fontsource-variable/geist": "^5.2.8",
+		"@fontsource/satisfy": "^5.2.7",
 		"@number-flow/svelte": "^0.4.0",
 		"animejs": "^4.3.6",
 		"bits-ui": "^2.17.3",
+		"rate-limiter-flexible": "^11.0.1",
+		"torph": "^0.0.9",
 		"valibot": "^1.3.1"
 	}
 }

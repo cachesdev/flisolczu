@@ -1,26 +1,21 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { Label, Select } from 'bits-ui';
 	import { METODO_PAGO_OPTIONS, type MetodoPago } from '$lib/config/certification-form';
 	import { certificationRegistrationSchema } from '$lib/validation/certification-registration';
 	import { submitCertificationRegistration } from '../../../routes/certification.remote';
 	import { eventState } from '$lib/state/event.svelte';
+	import TextMorph from '../../../../node_modules/torph/dist/svelte/TextMorph.svelte';
 
 	const form = submitCertificationRegistration.preflight(certificationRegistrationSchema);
 
 	let metodoPago = $state<MetodoPago>(
 		(form.fields.metodoPago.value() as MetodoPago | undefined) ?? METODO_PAGO_OPTIONS[0].value
 	);
+	let fullName = $derived(`${form.fields.nombre.value()} ${form.fields.apellido.value()}`);
 
 	const closed = $derived(eventState.registrationsClosed);
 	const locked = $derived(closed || !!form.pending);
 	const selected = $derived(METODO_PAGO_OPTIONS.find((o) => o.value === metodoPago) ?? null);
-
-	onMount(() => {
-		if (eventState.registrationsClosed) return;
-		eventState.startTicking();
-		return () => eventState.stopTicking();
-	});
 </script>
 
 <section
@@ -33,7 +28,7 @@
 				<h2 class="text-2xl leading-tight font-semibold sm:text-3xl">Registro para certificados</h2>
 				<p class="max-w-[54ch] text-sm leading-relaxed text-white/85 sm:text-base">
 					Completá tus datos para solicitar tu certificado de participación en FLISOL 2026 Caaguazu.
-					Una vez procesado, el equipo organizador te enviará la confirmación.
+					Una vez procesado, podes pasar en el evento para abonar y recibir tu certificado.
 				</p>
 
 				{#if eventState.registrationsDisabled}
@@ -50,15 +45,31 @@
 					</p>
 				{/if}
 
-				<div class="flex items-center justify-center pt-4">
-					<img src="/logo-hero.svg" alt="FLISOL" class="h-24 w-auto opacity-90" />
+				<div class="pt-4">
+					<div class="relative inline-block">
+						<enhanced:img
+							src="$lib/assets/certificado.png?w=1280,560,180&format=avif;webp"
+							alt="FLISOL Caaguazú 2026"
+							class="max-h-100 w-auto rounded-2xl border"
+						/>
+
+						<div
+							class="pointer-events-none absolute top-1/2 left-1/2 w-[72%] -translate-x-1/2 -translate-y-1/2 px-2 text-center"
+						>
+							<p
+								class="truncate font-satisfy text-[clamp(1rem,2.3vw,2rem)] font-semibold tracking-[0.02em] text-flisol-orange-500"
+							>
+								<TextMorph text={fullName} />
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 
 			<div
 				class="rounded-2xl border border-white/25 bg-white/95 p-4 text-slate-900 shadow-md sm:p-5"
 			>
-				<form {...form} class="grid gap-4" oninput={() => form.validate()}>
+				<form {...form} class="flex h-full flex-col gap-4" oninput={() => form.validate()}>
 					<div class="grid gap-1.5">
 						<Label.Root for="cert-cedula" class="text-sm font-medium text-slate-700">
 							Cédula
@@ -75,9 +86,9 @@
 						{/each}
 					</div>
 
-					<div class="grid gap-1.5">
+					<div class="flex flex-col gap-1.5">
 						<Label.Root for="cert-nombre" class="text-sm font-medium text-slate-700">
-							Nombre
+							Nombre/s
 						</Label.Root>
 						<input
 							id="cert-nombre"
@@ -93,7 +104,7 @@
 
 					<div class="grid gap-1.5">
 						<Label.Root for="cert-apellido" class="text-sm font-medium text-slate-700">
-							Apellido
+							Apellido/s
 						</Label.Root>
 						<input
 							id="cert-apellido"
@@ -157,11 +168,23 @@
 						>
 							{form.result.message}
 						</p>
+					{:else if form.fields.allIssues()}
+						<p
+							class="rounded-xl border border-flisol-orange-500/60 bg-flisol-orange-400/25 px-3 py-2 text-sm text-red-600"
+						>
+							{#each form.fields.allIssues() as issue, i (`${issue.message}-${i}`)}
+								{issue.message}<br />
+							{/each}
+						</p>
 					{/if}
 
+					<p class="mt-auto text-xs text-neutral-500">
+						Una vez registrada tu solicitud, podes pasar a abonar y retirar tu certificado durante
+						las horas del evento.
+					</p>
 					<button
 						type="submit"
-						class="mt-1 inline-flex h-11 items-center justify-center rounded-full bg-flisol-orange-500 px-6 text-sm font-semibold text-white transition hover:bg-flisol-orange-400 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600"
+						class="inline-flex h-11 items-center justify-center rounded-full bg-flisol-orange-500 px-6 text-sm font-semibold text-white transition hover:bg-flisol-orange-400 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600"
 						disabled={locked}
 					>
 						{#if form.pending}
@@ -177,6 +200,7 @@
 		</div>
 
 		{#snippet failed(error, reset)}
+			{console.log(error)}
 			<div class="rounded-2xl border border-red-400/60 bg-red-400/20 p-4 text-white">
 				<p class="font-semibold">Error al cargar el formulario</p>
 				{#if error && typeof error === 'object' && 'message' in error}

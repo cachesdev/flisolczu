@@ -1,9 +1,9 @@
 name: flisolczu2026
 services:
   db:
-    image: postgres
+    image: postgres:18.3
     env_file:
-      - .env
+      - ../../.env
     restart: always
     ports:
       - 5434:5432
@@ -12,6 +12,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: flisol
     volumes:
-      - pgdata:/var/lib/postgresql
+      - pgdata:/var/lib/postgresql/data
 volumes:
   pgdata:

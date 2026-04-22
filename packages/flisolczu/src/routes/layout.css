@@ -1,9 +1,11 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/geist';
+@import '@fontsource/satisfy';
 
 @theme inline {
 	/* Fonts */
 	--font-sans: 'Geist Variable', sans-serif;
+	--font-satisfy: 'Satisfy', cursive;
 
 	/* Visual rhythm aliases */
 	--radius-card: var(--radius);

@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { MetodoPago } from '$lib/config/certification-form';
+import { metodoPago } from '$lib/config/certification-form';
 
 export const certificationRegistrationSchema = v.object({
 	cedula: v.pipe(
@@ -20,7 +20,7 @@ export const certificationRegistrationSchema = v.object({
 		v.minLength(2, 'Ingresá al menos 2 caracteres en el apellido.'),
 		v.maxLength(80, 'El apellido no puede superar 80 caracteres.')
 	),
-	metodoPago: v.enum(MetodoPago, 'Seleccioná un método de pago válido.')
+	metodoPago: v.enum(metodoPago, 'Seleccioná un método de pago válido.')
 });
 
 export type CertificationRegistrationInput = v.InferOutput<typeof certificationRegistrationSchema>;

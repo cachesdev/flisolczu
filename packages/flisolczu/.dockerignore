@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Build output
+.svelte-kit
+build
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Development
+.vscode
+.git
+.gitignore
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Testing
+coverage
+
+# Misc
+.DS_Store
+*.swp
+*.swo
