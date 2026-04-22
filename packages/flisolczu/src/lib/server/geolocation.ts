@@ -14,13 +14,12 @@ export function isDevIP(ip: string): boolean {
 }
 
 export async function getCountryFromIP(event: RequestEvent): Promise<string | null> {
-	// Previene casos en el un proxy esta en frente de la pagina
 	const ip =
 		event.request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? event.getClientAddress();
 
 	try {
 		// ip-api.com es gratis, 45 requests por minuto
-		const response = await fetch(`http://ip-api.com/json/${ip}`);
+		const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,countryCode`);
 
 		if (!response.ok) {
 			console.error('Error en API de geolocalizacion:', response.status);
@@ -28,7 +27,6 @@ export async function getCountryFromIP(event: RequestEvent): Promise<string | nu
 		}
 
 		const data = await response.json();
-		console.log(data);
 
 		if (data.status === 'success') {
 			return data.countryCode;
