@@ -107,7 +107,7 @@
 				Programa FLISOL 2026
 			</p>
 			<h2 class="text-2xl font-semibold text-flisol-blue-600 sm:text-3xl">
-				Agenda preliminar · horario a definir
+				Agenda preliminar del evento
 			</h2>
 		</div>
 	</div>
