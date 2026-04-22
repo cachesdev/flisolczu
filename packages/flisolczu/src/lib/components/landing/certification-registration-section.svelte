@@ -30,8 +30,9 @@
 				<h2 class="text-2xl leading-tight font-semibold sm:text-3xl">Registro para certificados</h2>
 				<p class="max-w-[54ch] text-sm leading-relaxed text-white/85 sm:text-base">
 					Completá tus datos para solicitar tu certificado de participación en FLISOL 2026 Caaguazu.
-					Una vez procesado, podes pasar en el evento para abonar y recibir tu certificado. Costo:
-					10.000gs
+					Una vez procesado, podes pasar en el evento para abonar y recibir tu certificado. <span
+						class="font-bold">Costo: 10.000gs</span
+					>
 				</p>
 
 				{#if eventState.registrationsDisabled}
@@ -183,7 +184,7 @@
 
 					<p class="mt-auto text-xs text-neutral-500">
 						Una vez registrada tu solicitud, podes pasar a abonar y retirar tu certificado durante
-						las horas del evento. Costo: 10.000gs
+						las horas del evento. <span class="font-bold">Costo: 10.000gs</span>
 					</p>
 					<button
 						type="submit"
