@@ -4,10 +4,8 @@ import { rateLimiterFlexible } from '$lib/server/db/schema';
 
 let rateLimiter: RateLimiterDrizzle | null = null;
 
-/**
- * Obtener o crear la instancia del rate limiter
- * Permite 3 envíos por 15 minutos por IP
- */
+const MAX_POINTS = 10;
+
 export function getRateLimiter(): RateLimiterDrizzle {
 	if (rateLimiter) {
 		return rateLimiter;
@@ -17,7 +15,7 @@ export function getRateLimiter(): RateLimiterDrizzle {
 		storeClient: db,
 		schema: rateLimiterFlexible,
 		keyPrefix: 'cert_form',
-		points: 10, // 10 envíos
+		points: MAX_POINTS,
 		duration: 15 * 60, // cada 15 minutos
 		blockDuration: 15 * 60 // bloquear por 15 minutos después del límite
 	});
@@ -41,9 +39,9 @@ export async function getRemainingPoints(ip: string): Promise<number> {
 	const limiter = getRateLimiter();
 	try {
 		const res = await limiter.get(ip);
-		if (!res) return 10; // si no existe, tiene todos los puntos
-		return Math.max(0, 10 - res.consumedPoints);
+		if (!res) return MAX_POINTS; // si no existe, tiene todos los puntos
+		return Math.max(0, MAX_POINTS - res.consumedPoints);
 	} catch {
-		return 3;
+		return MAX_POINTS;
 	}
 }
