@@ -20,7 +20,7 @@ export const submitCertificationRegistration = form(
 		const isDev = isDevIP(ip);
 
 		// Skipeamos geolock y ratelimit si la IP es desarrollo
-		if (isDev) {
+		if (!isDev) {
 			const countryCode = await getCountryFromIP(event);
 
 			if (!isFromParaguay(countryCode)) {
