@@ -14,7 +14,9 @@ export function isDevIP(ip: string): boolean {
 }
 
 export async function getCountryFromIP(event: RequestEvent): Promise<string | null> {
-	const ip = event.getClientAddress();
+	// Previene casos en el un proxy esta en frente de la pagina
+	const ip =
+		event.request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? event.getClientAddress();
 
 	try {
 		// ip-api.com es gratis, 45 requests por minuto
