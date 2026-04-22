@@ -1,9 +1,0 @@
-[build]
-builder = "RAILPACK"
-
-[deploy]
-startCommand = "chmod +X ./docker/production/entrypoint.sh && ./docker/production/entrypoint.sh"
-healthcheckPath = "/"
-healthcheckTimeout = 100
-restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 10

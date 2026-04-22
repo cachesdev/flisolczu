@@ -40,7 +40,7 @@
 			format: 'Stand',
 			title: 'PROBANDO S.O. OPEN SOURCE (LINUX, UBUNTU, FEDORA...)',
 			details: 'Curso: 4to - UTIC',
-			people: 'Responsable: Anónimo (por confirmar)',
+			people: 'Responsable: Andres Britez',
 			type: 'stand'
 		},
 		{
@@ -56,18 +56,18 @@
 			start: 'A definir',
 			end: 'Horario por confirmar',
 			format: 'Stand',
-			title: 'VIDEOJUEGO CON SEGUIMIENTO CORPORAL',
+			title: 'JUEGO DE MISIL CON TRACKING CORPORAL',
 			details: 'Curso: 4to - UTIC',
-			people: 'Responsable: Anónimo (por confirmar)',
+			people: 'Responsable: Elias Almiron',
 			type: 'stand'
 		},
 		{
 			start: 'A definir',
 			end: 'Horario por confirmar',
 			format: 'Stand',
-			title: 'BOXEO CON SEGUIMIENTO CORPORAL',
+			title: 'JUEGO BOXEO DE BOXEO CON TRACKING CORPORAL',
 			details: 'Curso: 4to Campo 9',
-			people: 'Responsable: Equipo Campo 9 (por confirmar)',
+			people: 'Responsable: Pablo Duarte',
 			type: 'stand'
 		},
 		{
@@ -92,18 +92,9 @@
 			start: 'A definir',
 			end: 'Horario por confirmar',
 			format: 'Disertación',
-			title: 'PROGRAMAS OPEN SOURCE RECOMENDADOS',
-			details: 'Bloque de recomendaciones de software libre para estudio y trabajo.',
-			people: 'Disertante: Anónimo (por confirmar)',
-			type: 'disertacion'
-		},
-		{
-			start: 'A definir',
-			end: 'Horario por confirmar',
-			format: 'Disertación',
-			title: 'EMPEZAR EN LINUX SIN MORIR EN EL INTENTO',
-			details: 'Guía práctica para primeros pasos en distribuciones Linux.',
-			people: 'Disertante: Anónimo (por confirmar)',
+			title: 'BTS: DESARROLLANDO LAS APPS PARA LA FLISOL CZU 2026',
+			details: 'Curso: 4to - UTIC',
+			people: 'Disertantes: Gustavo Dominguez / Oscar Stiven Gonzales',
 			type: 'disertacion'
 		}
 	] as const;
