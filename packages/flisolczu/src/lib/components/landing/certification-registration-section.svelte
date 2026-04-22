@@ -11,7 +11,9 @@
 	let metodoPago = $state<MetodoPago>(
 		(form.fields.metodoPago.value() as MetodoPago | undefined) ?? METODO_PAGO_OPTIONS[0].value
 	);
-	let fullName = $derived(`${form.fields.nombre.value()} ${form.fields.apellido.value()}`);
+	let fullName = $derived(
+		`${form.fields.nombre.value() ?? 'John'} ${form.fields.apellido.value() ?? 'Flisol'}`
+	);
 
 	const closed = $derived(eventState.registrationsClosed);
 	const locked = $derived(closed || !!form.pending);
