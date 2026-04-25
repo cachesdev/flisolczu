@@ -1,0 +1,132 @@
+@layer reset, presentation, overrides;
+@import '@fontsource-variable/geist';
+@import '@fontsource/satisfy';
+
+/* fonts */
+@import '@fontsource/atkinson-hyperlegible';
+@import '@fontsource/monaspace-neon';
+
+/* presentation */
+@import '@animotion/core/theme' layer(presentation);
+
+/* tailwind */
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+/* custom styles */
+@import './overrides.css' layer(overrides);
+
+@layer reset {
+	*,
+	*::before,
+	*::after {
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+}
+
+@layer presentation {
+	:root {
+		--r-background-color: rgb(248 250 252);
+		--r-main-font: 'Geist Variable', sans-serif;
+		--r-main-font-size: 42px;
+		--r-main-color: rgb(15 23 42);
+		--r-heading-font: 'Geist Variable', sans-serif;
+		--r-code-font: 'Monaspace Neon';
+		--r-link-color: var(--flisol-blue-600);
+		--ease: linear(
+			0 0%,
+			0.0036 9.62%,
+			0.0185 16.66%,
+			0.0489 23.03%,
+			0.0962 28.86%,
+			0.1705 34.93%,
+			0.269 40.66%,
+			0.3867 45.89%,
+			0.5833 52.95%,
+			0.683 57.05%,
+			0.7829 62.14%,
+			0.8621 67.46%,
+			0.8991 70.68%,
+			0.9299 74.03%,
+			0.9545 77.52%,
+			0.9735 81.21%,
+			0.9865 85%,
+			0.9949 89.15%,
+			1 100%
+		);
+		--view-transition-duration: 0.6s;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	html {
+		view-transition-name: none;
+	}
+
+	::view-transition-group(*) {
+		animation-duration: var(--view-transition-duration);
+		animation-timing-function: var(--ease);
+	}
+
+	::view-transition-new(*):only-child {
+		animation: scale-in var(--view-transition-duration) var(--ease);
+	}
+
+	::view-transition-old(*):only-child {
+		animation: scale-out var(--view-transition-duration) var(--ease);
+	}
+}
+
+@keyframes scale-in {
+	from {
+		scale: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes scale-out {
+	to {
+		scale: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes rotate {
+	from {
+		opacity: 0;
+	}
+	20% {
+		rotate: 0deg;
+	}
+	40% {
+		opacity: 1;
+	}
+	to {
+		rotate: 360deg;
+	}
+}
+
+@theme inline {
+	--font-sans: 'Geist Variable', sans-serif;
+	--font-satisfy: 'Satisfy', cursive;
+
+	--color-flisol-blue-600: var(--flisol-blue-600);
+	--color-flisol-blue-400: var(--flisol-blue-400);
+	--color-flisol-blue-300: var(--flisol-blue-300);
+	--color-flisol-lime-400: var(--flisol-lime-400);
+	--color-flisol-orange-400: var(--flisol-orange-400);
+	--color-flisol-orange-500: var(--flisol-orange-500);
+}
+
+:root {
+	--flisol-blue-400: rgb(0 85 212);
+	--flisol-blue-300: rgb(0 113 222);
+	--flisol-blue-600: rgb(0 44 128);
+	--flisol-lime-400: rgb(204 255 0);
+	--flisol-orange-400: rgb(255 163 65);
+	--flisol-orange-500: rgb(255 142 42);
+}
